@@ -128,8 +128,10 @@ class _digitalocean():
     # image ubuntu-20-04-x86
     def createDroplet(self,name,region,image,size,ssh_keys):
         data = { "name" : name, "region" : region, "size" : size, "image" : image, "ssh_keys" : ssh_keys }
-        response = self.apiCall("droplets",methord="POST",data=data)["droplet"]
-        return response["id"]
+        response = self.apiCall("droplets",methord="POST",data=data)
+        if response:
+            return response["droplet"]["id"]
+        return None
 
     def deleteDroplet(self,dropletID):
         response = self.apiCall("droplets/{0}".format(dropletID),methord="DELETE")
