@@ -13,7 +13,7 @@ class _digitalocean(plugin._plugin):
         model.registerModel("digitaloceanDeleteDroplet","_digitaloceanDeleteDroplet","_action","plugins.digitalocean.models.action")
         model.registerModel("digitaloceanWaitForDroplet","_digitaloceanWaitForDroplet","_action","plugins.digitalocean.models.action")
         model.registerModel("digitaloceanListKeys","_digitaloceanListKeys","_action","plugins.digitalocean.models.action")
-        model.registerModel("digitaloceanGetKeyByName","digitaloceanGetKeyByName","_action","plugins.digitalocean.models.action")
+        model.registerModel("digitaloceanGetKeyByName","_digitaloceanGetKeyByName","_action","plugins.digitalocean.models.action")
         model.registerModel("digitaloceanMyBalance","_digitaloceanMyBalance","_action","plugins.digitalocean.models.action")
         return True
 
@@ -27,7 +27,7 @@ class _digitalocean(plugin._plugin):
         model.deregisterModel("digitaloceanDeleteDroplet","_digitaloceanDeleteDroplet","_action","plugins.digitalocean.models.action")
         model.deregisterModel("digitaloceanWaitForDroplet","_digitaloceanWaitForDroplet","_action","plugins.digitalocean.models.action")
         model.deregisterModel("digitaloceanListKeys","_digitaloceanListKeys","_action","plugins.digitalocean.models.action")
-        model.deregisterModel("digitaloceanGetKeyByName","digitaloceanGetKeyByName","_action","plugins.digitalocean.models.action")
+        model.deregisterModel("digitaloceanGetKeyByName","_digitaloceanGetKeyByName","_action","plugins.digitalocean.models.action")
         model.deregisterModel("digitaloceanMyBalance","_digitaloceanMyBalance","_action","plugins.digitalocean.models.action")
         return True
 
