@@ -38,12 +38,17 @@ class _digitaloceanGetDropletByName(action._action):
 
         result = digitalocean._digitalocean(apiToken).listDroplets(name=dropletName)
         if result:
-            actionResult["result"] = True
-            actionResult["rc"] = 0
-            actionResult["droplet"] = result
+            if "error" in result:
+                actionResult["result"] = False
+                actionResult["msg"] = result["msg"]
+                actionResult["rc"] = result["error"]
+            else:
+                actionResult["result"] = True
+                actionResult["rc"] = 0
+                actionResult["droplet"] = result
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Unable to get droplet by name, it likely does not exist"
         return actionResult 
 
@@ -70,7 +75,7 @@ class _digitaloceanGetDroplet(action._action):
             actionResult["droplet"] = result
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
@@ -97,7 +102,7 @@ class _digitaloceanGetDropletPublicNetwork(action._action):
             actionResult["droplet"] = result
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
@@ -133,7 +138,7 @@ class _digitaloceanCreateDroplet(action._action):
             actionResult["dropletID"] = result
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
@@ -159,7 +164,7 @@ class _digitaloceanDeleteDroplet(action._action):
             actionResult["rc"] = 0
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
@@ -210,7 +215,7 @@ class _digitaloceanListKeys(action._action):
             actionResult["keys"] = result
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
@@ -238,7 +243,7 @@ class _digitaloceanGetKeyByName(action._action):
             actionResult["key"] = result
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
@@ -264,7 +269,7 @@ class _digitaloceanMyBalance(action._action):
             actionResult["balance"] = result
         else:
             actionResult["result"] = False
-            actionResult["rc"] = 404
+            actionResult["rc"] = 500
             actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 

@@ -76,12 +76,12 @@ class _digitalocean():
             if not name:
                 return result
             else:
-                return {}
+                return { "msg" : "Not found", "error" : 404 }
         if name:
             for droplet in response:
                 if droplet["name"] == name:
                     return droplet
-            return {}
+            return { "msg" : "Not found", "error" : 404 }
         return response
 
     def getDroplet(self,dropletID,summary=True,network=False):
