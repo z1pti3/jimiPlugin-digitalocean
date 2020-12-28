@@ -73,11 +73,15 @@ class _digitalocean():
                 result.append(resultItem)
                 if droplet["name"] == name:
                     return resultItem
-            return result
+            if not name:
+                return result
+            else:
+                return {}
         if name:
             for droplet in response:
                 if droplet["name"] == name:
                     return droplet
+            return {}
         return response
 
     def getDroplet(self,dropletID,summary=True,network=False):

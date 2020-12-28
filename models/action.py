@@ -44,7 +44,7 @@ class _digitaloceanGetDropletByName(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Unable to get droplet by name, it likely does not exist"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
@@ -71,7 +71,7 @@ class _digitaloceanGetDroplet(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
@@ -98,7 +98,7 @@ class _digitaloceanGetDropletPublicNetwork(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
@@ -134,7 +134,7 @@ class _digitaloceanCreateDroplet(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
@@ -160,7 +160,7 @@ class _digitaloceanDeleteDroplet(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
@@ -211,7 +211,7 @@ class _digitaloceanListKeys(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
@@ -239,7 +239,7 @@ class _digitaloceanGetKeyByName(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
@@ -265,7 +265,7 @@ class _digitaloceanMyBalance(action._action):
         else:
             actionResult["result"] = False
             actionResult["rc"] = 404
-            actionResult["msg"] = "Failed to get a valid response from virustotal API"
+            actionResult["msg"] = "Failed to get a valid response from API"
         return actionResult 
 
     def setAttribute(self,attr,value,sessionData=None):
