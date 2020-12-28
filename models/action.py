@@ -30,13 +30,13 @@ class _digitaloceanListDroplets(action._action):
 
 class _digitaloceanGetDropletByName(action._action):
     apiToken = str()
-    name = str()
+    dropletName = str()
 
     def run(self,data,persistentData,actionResult):
         apiToken = auth.getPasswordFromENC(self.apiToken)
-        name = helpers.evalString(self.name,{"data" : data})
+        dropletName = helpers.evalString(self.dropletName,{"data" : data})
 
-        result = digitalocean._digitalocean(apiToken).listDroplets(name=name)
+        result = digitalocean._digitalocean(apiToken).listDroplets(name=dropletName)
         if result:
             actionResult["result"] = True
             actionResult["rc"] = 0
@@ -112,7 +112,7 @@ class _digitaloceanGetDropletPublicNetwork(action._action):
 
 class _digitaloceanCreateDroplet(action._action):
     apiToken = str()
-    name = str()
+    dropletName = str()
     region = str()
     image = str()
     size = str()
@@ -120,13 +120,13 @@ class _digitaloceanCreateDroplet(action._action):
 
     def run(self,data,persistentData,actionResult):
         apiToken = auth.getPasswordFromENC(self.apiToken)
-        name = helpers.evalString(self.name,{"data" : data})
+        dropletName = helpers.evalString(self.dropletName,{"data" : data})
         region = helpers.evalString(self.region,{"data" : data})
         image = helpers.evalString(self.image,{"data" : data})
         size = helpers.evalString(self.size,{"data" : data})
         ssh_key = int(helpers.evalString(self.ssh_key,{"data" : data}))
 
-        result = digitalocean._digitalocean(apiToken).createDroplet(name,region,image,size,[ssh_key])
+        result = digitalocean._digitalocean(apiToken).createDroplet(dropletName,region,image,size,[ssh_key])
         if result:
             actionResult["result"] = True
             actionResult["rc"] = 0
@@ -224,14 +224,14 @@ class _digitaloceanListKeys(action._action):
 
 class _digitaloceanGetKeyByName(action._action):
     apiToken = str()
-    name = str()
+    keyName = str()
 
     def run(self,data,persistentData,actionResult):
         apiToken = auth.getPasswordFromENC(self.apiToken)
-        name = helpers.evalString(self.name,{"data" : data})
+        keyName = helpers.evalString(self.keyName,{"data" : data})
 
 
-        result = digitalocean._digitalocean(apiToken).listKeys(name=name)
+        result = digitalocean._digitalocean(apiToken).listKeys(name=keyName)
         if result:
             actionResult["result"] = True
             actionResult["rc"] = 0
